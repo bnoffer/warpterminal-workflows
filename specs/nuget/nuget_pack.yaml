@@ -1,0 +1,34 @@
+---
+# The name of the workflow.
+name: Package a Visual Studio Project as Nuget Package
+# The corresponding command for the workflow. Any arguments should be surrounded with two curly braces. E.g `command {{arg}}`.
+command: |-
+    nuget pack {{project_file}} -properties Configuration={{build_config}}
+# Any tags that the workflow should be categorized with.
+tags:
+  - nuget
+# A description of the workflow.
+description: Uses the nuget command provided by .NET/Mono to package a Visual Studio project as Nuget package
+# List of arguments within the command.
+arguments:
+    # Name of the argument within the command. This must exactly match the name of the argument
+    # within the command (without the curly braces).
+  - name: project_file
+    # The description of the argument.
+    description: Visual Studio Project File to use for packaging
+    # The default value for the argument.
+    default_value: MyProject.csproj
+  - name: build_config
+    # The description of the argument.
+    description: Project build configuration, typically Debug or Release, Release is default
+    # The default value for the argument.
+    default_value: Release
+# The source URL for where the workflow was generated from, if any.
+source_url: "https://learn.microsoft.com/en-us/nuget/reference/cli-reference/cli-ref-pack"
+# The author of the workflow.
+author: Bastian Noffer
+# The URL of original author of the Workflow. For example, if this workflow was generated from StackOverflow, the `author_url` would be the StackOverflow author's profile page.
+author_url: "https://github.com/bnoffer"
+# The valid shells where this workflow should be active. If valid for all shells, this can be left empty.
+# See FORMAT.md for the full list of accepted values.
+shells: []
